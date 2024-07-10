@@ -7,6 +7,7 @@ import menu from "/menu.svg"
 const ContainerNavBar = styled.div`
     display: flex;
     justify-content: space-between;
+    align-items: center;
 `
 
 const NavBar = () => {
