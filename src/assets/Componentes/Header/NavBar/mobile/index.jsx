@@ -6,14 +6,17 @@ import menu from "/menu.svg"
 
 const ContainerNavBar = styled.div`
     display: flex;
+    justify-content: space-between;
 `
 
 const NavBar = () => {
     return (
         <ContainerNavBar>
             <img src={logo} alt="logo" />
-            <img src={shop} alt="icone de bolsa de compra" />
-            <img src={menu} alt="icone do menu" />
+            <div>
+                <img src={shop} alt="icone de bolsa de compra" />
+                <img src={menu} alt="icone do menu" />
+            </div>
         </ContainerNavBar>
     )
 }
