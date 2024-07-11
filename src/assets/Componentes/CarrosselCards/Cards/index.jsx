@@ -1,6 +1,5 @@
-
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import PropTypes from 'prop-types'; // Importando PropTypes
 
 const ContainerCard = styled.div`
   .card {
@@ -24,9 +23,7 @@ const ContainerCard = styled.div`
     width: 100%;
     height: 150px;
     background-color: rgb(239, 205, 255);
-    background-image: ${({ image }) => image ? `url(${image})` : 'none'};
-    background-size: cover;
-    background-position: center;
+    background-image: url(${(props) => props.$image});
   }
 
   .title {
@@ -68,16 +65,14 @@ const ContainerCard = styled.div`
 
 const Cards = ({ title, description, image, link }) => {
   return (
-    <ContainerCard image={image}>
+    <ContainerCard $image={image}>
       <div className="card">
-        <div className="image" style={{ backgroundImage: `url(${image})` }}></div>
+        <div className="image"></div>
         <div className="content">
-          <a href={link}>
+          <a href="#">
             <span className="title">{title}</span>
           </a>
-
           <p className="desc">{description}</p>
-
           <a className="action" href={link}>
             Find out more
             <span aria-hidden="true">→</span>

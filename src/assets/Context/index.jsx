@@ -1,4 +1,4 @@
-import { createContext, useContext, useRef, useEffect } from 'react';
+import { createContext, useContext, useRef, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 // Criação do contexto básico
@@ -32,15 +32,6 @@ export const useCarouselContext = () => {
   return context;
 };
 
-// Hook para acessar o contexto do menu
-export const useMenuContext = () => {
-  const context = useContext(MenuContext);
-  if (!context) {
-    throw new Error('useMenuContext deve ser usado dentro de um MenuProvider');
-  }
-  return context;
-};
-
 // Hook para lidar com eventos de scroll no carrossel
 export const useCarouselScroll = () => {
   const carrosselRef = useRef(null);
@@ -70,19 +61,47 @@ export const useCarouselScroll = () => {
   return { carrosselRef };
 };
 
+// Hook para acessar o contexto do menu
+export const useMenuContext = () => {
+  const context = useContext(MenuContext);
+  if (!context) {
+    throw new Error('useMenuContext deve ser usado dentro de um MenuProvider');
+  }
+  return context;
+};
+
 // Provider geral que encapsula todos os providers
 export const AppProvider = ({ children }) => {
+  const [estaAberto, setEstaAberto] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  const abrirMenu = () => {
+    if (!estaAberto) {
+      setIsAnimating(true);
+    }
+    setEstaAberto(!estaAberto);
+  };
+
+  useEffect(() => {
+    if (!estaAberto && isAnimating) {
+      const timer = setTimeout(() => {
+        setIsAnimating(false);
+      }, 300); // Duração da animação
+
+      return () => clearTimeout(timer);
+    }
+  }, [estaAberto, isAnimating]);
+
   return (
     <Provider>
       <CarouselContext.Provider value={null}>
-        <MenuContext.Provider value={null}>
+        <MenuContext.Provider value={{ estaAberto, abrirMenu, isAnimating, setIsAnimating }}>
           {children}
         </MenuContext.Provider>
       </CarouselContext.Provider>
     </Provider>
   );
 };
-
 
 AppProvider.propTypes = {
   children: PropTypes.node.isRequired,
