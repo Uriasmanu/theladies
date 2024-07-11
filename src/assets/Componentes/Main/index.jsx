@@ -1,9 +1,9 @@
 import Destaques from "./Destaques";
 
-const Main= () =>{
+const Main = () =>{
     return(
         <>
-        <Destaques/>
+            <Destaques/>
         </>
     )
 }

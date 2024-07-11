@@ -12,6 +12,7 @@ const ContainerNavBar = styled.div`
 `
 
 const NavBar = () => {
+
     return (
         <ContainerNavBar>
             <img src={logo} alt="logo" />

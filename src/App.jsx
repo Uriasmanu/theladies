@@ -1,15 +1,16 @@
 import './App.css'
-
-import Inicio from './assets/Componentes/Secoes/Inicio'
-
+import Inicio from './assets/Componentes/Telas/Inicio'
+import { AppProvider } from './assets/Context'
 
 
 function App() {
 
   return (
-    <>
-      <Inicio/>
-    </>
+    <AppProvider>
+
+        <Inicio />
+
+    </AppProvider>
   )
 }
 

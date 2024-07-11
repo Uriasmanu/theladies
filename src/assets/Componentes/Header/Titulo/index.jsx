@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 const ContainerTitulo = styled.div`
-
+    margin-bottom: 10%;
+    z-index: 1;
 
     h1{
         font-size: 3rem;
