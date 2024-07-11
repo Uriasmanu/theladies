@@ -9,6 +9,7 @@ const ContainerDestaques = styled.div`
     width: 100vw;
     height: auto;
     padding: 5% 0;
+    flex-direction: column;
 
     h2{
         font-size: 2rem;
@@ -22,9 +23,6 @@ const ContainerDestaques = styled.div`
         margin-bottom: 10%;
     }
 
-    @media screen and (max-width: 738px) {
-        flex-direction: column;
-    }
 
 `
 
