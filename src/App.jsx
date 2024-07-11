@@ -1,5 +1,7 @@
 import './App.css'
-import Inicio from './assets/Componentes/Telas/Inicio'
+
+import Inicio from './assets/Componentes/Secoes/Inicio'
+
 
 
 function App() {

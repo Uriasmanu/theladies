@@ -1,9 +1,11 @@
 import styled from "styled-components";
-import NavBar from "../../Header/NavBar/mobile";
-import Titulo from "../../Header/Titulo";
+import Header from "../../Header";
+import Main from "../../Main";
+import Footer from "../../Footer";
+
 
 const ContainerInicio = styled.div`
-display: flexbox;
+display: flex;
 flex-direction: column;
 `
 
@@ -12,8 +14,9 @@ flex-direction: column;
 const Inicio = () => {
     return (
         <ContainerInicio>
-            <NavBar />
-            <Titulo />
+            <Header />
+            <Main />
+            <Footer />
         </ContainerInicio>
     )
 }
