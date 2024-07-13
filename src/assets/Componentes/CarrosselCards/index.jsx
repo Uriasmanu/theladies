@@ -7,6 +7,7 @@ import infos from '../../Infos/infos.json';
 const ContainerCarrossel = styled.div`
   display: flex;
   flex-direction: column;
+  margin-left: 4%;
 
   .TituloTrabalhos {
     h2 {

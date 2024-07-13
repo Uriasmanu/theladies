@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'; // Importando PropTypes
 
 const ContainerCard = styled.div`
   .card {
-    max-width: 300px;
+    max-width: 350px;
     border-radius: 0.5rem;
     background-color: #fff;
     box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.5);
@@ -19,11 +19,14 @@ const ContainerCard = styled.div`
   }
 
   .image {
-    object-fit: cover;
-    width: 100%;
-    height: 350px;
-    background-color: rgb(239, 205, 255);
-    background-image: url(${(props) => props.$image});
+
+    width: 350px;
+  height: 350px;
+  background-color: rgb(239, 205, 255);
+  background-image: url(${(props) => props.$image});
+  background-size: cover; /* Ajusta o tamanho da imagem para cobrir o container */
+  background-position: center; /* Centraliza a imagem no container */
+  background-repeat: no-repeat; /* Evita que a imagem se repita */
   }
 
   .title {
