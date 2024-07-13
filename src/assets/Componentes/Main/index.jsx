@@ -1,9 +1,11 @@
-import Destaques from "./Destaques";
+import Secoes from "./Secoes";
 
 const Main = () =>{
     return(
         <>
-            <Destaques/>
+           <Secoes titulo="Destaques" cor="#fff"/>
+           <Secoes titulo="Tendencias" cor="#FCDCCD" />
+
         </>
     )
 }

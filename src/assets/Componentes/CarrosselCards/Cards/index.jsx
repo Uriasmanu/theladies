@@ -6,7 +6,7 @@ const ContainerCard = styled.div`
     max-width: 300px;
     border-radius: 0.5rem;
     background-color: #fff;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.5);
     border: 1px solid transparent;
   }
 
@@ -21,7 +21,7 @@ const ContainerCard = styled.div`
   .image {
     object-fit: cover;
     width: 100%;
-    height: 150px;
+    height: 350px;
     background-color: rgb(239, 205, 255);
     background-image: url(${(props) => props.$image});
   }

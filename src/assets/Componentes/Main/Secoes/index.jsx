@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import CarrosselCards from "../../CarrosselCards";
+import PropTypes from 'prop-types';
 
 const ContainerDestaques = styled.div`
     display: flex;
-    background: #fff;
+    background: ${({ cor }) => cor};
     position: relative;
     left: -21px;
     width: 100vw;
@@ -26,13 +27,18 @@ const ContainerDestaques = styled.div`
 
 `
 
-const Destaques = () => {
+const Secoes = ({ titulo, cor }) => {
     return (
-        <ContainerDestaques>
-            <h2>--- Destaques ---</h2>
+        <ContainerDestaques cor={cor}>
+            <h2>--- {titulo} ---</h2>
             <CarrosselCards/>
         </ContainerDestaques>
     )
 }
 
-export default Destaques;
+export default Secoes;
+
+Secoes.propTypes = {
+    titulo: PropTypes.node.isRequired,
+    cor: PropTypes.string,
+  };
