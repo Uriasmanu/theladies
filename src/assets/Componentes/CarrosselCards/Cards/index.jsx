@@ -22,7 +22,6 @@ const ContainerCard = styled.div`
 
     width: 350px;
   height: 350px;
-  background-color: rgb(239, 205, 255);
   background-image: url(${(props) => props.$image});
   background-size: cover; /* Ajusta o tamanho da imagem para cobrir o container */
   background-position: center; /* Centraliza a imagem no container */
