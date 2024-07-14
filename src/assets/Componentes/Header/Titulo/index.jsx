@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const ContainerTitulo = styled.div`
-    margin-bottom: 10%;
+    margin-bottom: 15%;
     z-index: 1;
 
     h1{

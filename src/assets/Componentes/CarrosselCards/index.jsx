@@ -20,7 +20,6 @@ const ContainerCarrossel = styled.div`
     display: flex;
     overflow-x: auto;
     scroll-behavior: smooth;
-
     width: 100%;
   }
 

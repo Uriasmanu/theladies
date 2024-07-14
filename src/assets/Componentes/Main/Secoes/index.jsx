@@ -17,7 +17,6 @@ const ContainerDestaques = styled.div`
         font-weight: 700;
         color: #420238;
         font-family: "Arbutus Slab", serif;
-        margin-top: 20%;
         display: flex;
         width: 100%;
         justify-content: center;
