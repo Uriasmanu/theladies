@@ -19,14 +19,14 @@ const ContainerCard = styled.div`
   }
 
   .image {
-
-    width: 350px;
-  height: 350px;
-  background-image: url(${(props) => props.$image});
-  background-size: cover; /* Ajusta o tamanho da imagem para cobrir o container */
-  background-position: center; /* Centraliza a imagem no container */
-  background-repeat: no-repeat; /* Evita que a imagem se repita */
-  }
+      img{
+        width: 350px;
+        height: 450px;
+        background-size: cover; /* Ajusta o tamanho da imagem para cobrir o container */
+        background-position: center; /* Centraliza a imagem no container */
+        background-repeat: no-repeat; /* Evita que a imagem se repita */
+      }
+    }
 
   .title {
     color: #111827;
@@ -69,7 +69,9 @@ const Cards = ({ title, description, image, link }) => {
   return (
     <ContainerCard $image={image}>
       <div className="card">
-        <div className="image"></div>
+        <div className="image">
+          <img src={image} alt={title} />
+        </div>
         <div className="content">
           <a href="#">
             <span className="title">{title}</span>
