@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types'; // Importando PropTypes
+import { useEffect } from 'react';
 
 const ContainerCard = styled.div`
   .card {
@@ -66,6 +67,14 @@ const ContainerCard = styled.div`
 `;
 
 const Cards = ({ title, description, image, link }) => {
+
+  useEffect(() => {
+    const img = new Image();
+    img.src = image;
+    img.onload = () => console.log('Imagem carregada com sucesso:', image);
+    img.onerror = () => console.error('Erro ao carregar imagem:', image);
+  }, [image]);
+
   return (
     <ContainerCard $image={image}>
       <div className="card">
