@@ -76,6 +76,8 @@ const MenuContainer = styled.div`
       display: flex;
       margin-top: 10%;
       gap: 5%;
+      width: 90vw;
+
 
       img{
         width: 40%;
