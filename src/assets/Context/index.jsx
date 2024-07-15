@@ -1,6 +1,7 @@
 import { createContext, useContext, useRef, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
+
 // Criação do contexto básico
 export const Context = createContext(undefined);
 
@@ -74,6 +75,7 @@ export const useMenuContext = () => {
 export const AppProvider = ({ children }) => {
   const [estaAberto, setEstaAberto] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
+
 
   const abrirMenu = () => {
     if (!estaAberto) {

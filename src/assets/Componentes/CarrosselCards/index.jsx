@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import Cards from './Cards';
 import { useCarouselScroll } from '../../Context';
-import infos from '../../Infos/infos.json';
+import { productsInfo } from '../../Infos/infos';
+
 
 
 const ContainerCarrossel = styled.div`
@@ -40,7 +41,7 @@ const CarrosselCards = () => {
   return (
     <ContainerCarrossel id="container-Carrossel">
     <div className="CarroselCards" ref={carrosselRef}>
-      {infos.cards.map((card, index) => (
+      {productsInfo.cards.map((card, index) => (
         <CardWrapper key={`card-${index}`}>
           <Cards title={card.titulo} description={card.descricao} image={card.imagem} link={card.link} />
         </CardWrapper>

@@ -1,7 +1,8 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
-import { useMenuContext } from '../../../../../Context';
 
+import { productsInfo } from '../../../../../Infos/infos';
+import { useMenuContext } from '../../../../../Context';
 
 const slideIn = keyframes`
   from {
@@ -36,70 +37,111 @@ const MenuContainer = styled.div`
   align-items: flex-start;
 
   .group {
-  display: flex;
-  line-height: 28px;
-  align-items: center;
-  position: relative;
-  max-width: 230px;
-}
+    display: flex;
+    line-height: 28px;
+    align-items: center;
+    position: relative;
+    max-width: 230px;
+  }
 
-.input {
-  height: 40px;
-  line-height: 28px;
-  padding: 0 1rem;
-  width: 100%;
-  padding-left: 2.5rem;
-  border: 2px solid transparent;
-  border-radius: 8px;
-  outline: none;
-  background-color: #FCDCCD;
-  color: #0d0c22;
-  box-shadow: 0 0 5px #fff0e9, 0 0 0 10px #f5f5f5eb;
-  transition: .3s ease;
-}
+  .input {
+    height: 40px;
+    line-height: 28px;
+    padding: 0 1rem;
+    width: 100%;
+    padding-left: 2.5rem;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    outline: none;
+    background-color: #FCDCCD;
+    color: #0d0c22;
+    box-shadow: 0 0 5px #fff0e9, 0 0 0 10px #f5f5f5eb;
+    transition: .3s ease;
+  }
 
-.input::placeholder {
-  color: #B57D62;
-}
+  .input::placeholder {
+    color: #B57D62;
+  }
 
-.icon {
-  position: absolute;
-  left: 1rem;
-  fill: #B57D62;
-  width: 1rem;
-  height: 1rem;
-}
+  .icon {
+    position: absolute;
+    left: 1rem;
+    fill: #B57D62;
+    width: 1rem;
+    height: 1rem;
+  }
 
+  .pesquisa{
+    .cardBusca{
+      display: flex;
+      margin-top: 10%;
+      gap: 5%;
 
+      img{
+        width: 40%;
+        height: auto;
+      }
 
+      .containerInform{
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
 `;
 
 const MenuAberto = () => {
-    const { estaAberto, isAnimating, setIsAnimating } = useMenuContext();
+  const { estaAberto, isAnimating, setIsAnimating } = useMenuContext();
+  const [buscar, setBuscar] = useState("");
+  const [produtos, setProdutos] = useState([]);
 
-    useEffect(() => {
-        if (!estaAberto && isAnimating) {
-            const timer = setTimeout(() => {
-                setIsAnimating(false);
-            }, 300); // Duração da animação
-
-            return () => clearTimeout(timer);
-        }
-    }, [estaAberto, isAnimating, setIsAnimating]);
-
-    return (
-        <MenuContainer $estaAberto={estaAberto} $isAnimating={isAnimating}>
-
-            <div className="group">
-                <svg className="icon" aria-hidden="true" viewBox="0 0 24 24">
-                    <g>
-                        <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path>
-                    </g>
-                </svg>
-                <input placeholder="Search" type="search" className="input"/>
-            </div>
-        </MenuContainer>
+  useEffect(() => {
+    const resultados = productsInfo.cards.filter(produto =>
+      produto.titulo.toLowerCase().includes(buscar.toLowerCase())
     );
+    setProdutos(resultados);
+  }, [buscar]);
+
+  useEffect(() => {
+    if (!estaAberto && isAnimating) {
+      const timer = setTimeout(() => {
+        setIsAnimating(false);
+      }, 300); // Duração da animação
+
+      return () => clearTimeout(timer);
+    }
+  }, [estaAberto, isAnimating, setIsAnimating]);
+
+  return (
+    <MenuContainer $estaAberto={estaAberto} $isAnimating={isAnimating}>
+      <div className="group">
+        <svg className="icon" aria-hidden="true" viewBox="0 0 24 24">
+          <g>
+            <path d="M21 19.56l-5.75-5.75a7.5 7.5 0 1 0-1.41 1.41L19.56 21a1 1 0 0 0 1.41-1.41zM10 16a6 6 0 1 1 0-12 6 6 0 0 1 0 12z"></path>
+          </g>
+        </svg>
+        <input
+          type="text"
+          className="input"
+          placeholder="Buscar produtos..."
+          value={buscar}
+          onChange={(e) => setBuscar(e.target.value)}
+        />
+      </div>
+      <div className='pesquisa'>
+        {buscar && produtos.map(produto => (
+          <div key={produto.titulo} className='cardBusca'>
+            <img src={produto.imagem} alt={produto.titulo} />
+            <div className='containerInform'>
+              <h2>{produto.titulo}</h2>
+              <p>{produto.descricao}</p>
+              <a href={produto.link}>Ver mais</a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </MenuContainer>
+  );
 };
 
 export default MenuAberto;
