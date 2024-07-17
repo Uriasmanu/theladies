@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types'; // Importando PropTypes
 import { useEffect } from 'react';
+import BotaoVejaMais from '../../BotaoVejaMais';
 
 const ContainerCard = styled.div`
   .card {
@@ -17,6 +18,10 @@ const ContainerCard = styled.div`
 
   .content {
     padding: 1.1rem;
+
+    p{
+      margin-bottom: 2%;
+    }
   }
 
   .image {
@@ -86,10 +91,11 @@ const Cards = ({ title, description, image, link }) => {
             <span className="title">{title}</span>
           </a>
           <p className="desc">{description}</p>
-          <a className="action" href={link}>
-            Find out more
-            <span aria-hidden="true">→</span>
-          </a>
+          <BotaoVejaMais>
+            <a className="action" href={link}></a>
+
+          </BotaoVejaMais>
+
         </div>
       </div>
     </ContainerCard>

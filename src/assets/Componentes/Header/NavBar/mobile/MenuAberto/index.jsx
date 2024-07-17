@@ -3,6 +3,7 @@ import styled, { keyframes } from 'styled-components';
 
 import { productsInfo } from '../../../../../Infos/infos';
 import { useMenuContext } from '../../../../../Context';
+import BotaoVejaMais from '../../../../BotaoVejaMais';
 
 const slideIn = keyframes`
   from {
@@ -99,18 +100,6 @@ const MenuContainer = styled.div`
 
         }
 
-        button{
-          background: #FAAB89;
-          border: none;
-          padding: 2%;
-          border-radius: 6px;
-
-          a{
-            text-decoration: none;
-            color: #420238;
-
-          }
-        }
 
       }
     }
@@ -162,9 +151,9 @@ const MenuAberto = () => {
             <div className='containerInform'>
               <h2>{produto.titulo}</h2>
               <p>{produto.descricao}</p>
-              <button>
+              <BotaoVejaMais>
                 <a href={produto.link}>Ver mais</a>
-              </button>
+              </BotaoVejaMais>
             </div>
           </div>
         ))}
