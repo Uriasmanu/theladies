@@ -77,7 +77,7 @@ const MenuContainer = styled.div`
       margin-top: 10%;
       gap: 5%;
       width: 90vw;
-
+      align-items: center;
 
       img{
         width: 40%;
@@ -87,6 +87,31 @@ const MenuContainer = styled.div`
       .containerInform{
         display: flex;
         flex-direction: column;
+
+        h2{
+          color: #420238;
+          margin-bottom: 6%;
+        }
+
+        p{
+          color: #B97FB0;
+          margin-bottom: 6%;
+
+        }
+
+        button{
+          background: #FAAB89;
+          border: none;
+          padding: 2%;
+          border-radius: 6px;
+
+          a{
+            text-decoration: none;
+            color: #420238;
+
+          }
+        }
+
       }
     }
   }
@@ -137,7 +162,9 @@ const MenuAberto = () => {
             <div className='containerInform'>
               <h2>{produto.titulo}</h2>
               <p>{produto.descricao}</p>
-              <a href={produto.link}>Ver mais</a>
+              <button>
+                <a href={produto.link}>Ver mais</a>
+              </button>
             </div>
           </div>
         ))}
